@@ -6,8 +6,8 @@
 	char ** msg; 
     CLIENT * clnt;
 {
-	printf("%s\n", msg);
-	return(1);
+	printf("%s\n", *msg);
+	return(0);
 }
 
 
@@ -16,6 +16,6 @@ printmessage_1_svc(msg, req)
 	char **msg;	
 	struct svc_req *req;		/* details of call */
 {
-	printf("%s\n", msg);
-	return(1);
+	printf("%s\n", *msg);
+	return(0);
 }

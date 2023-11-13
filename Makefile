@@ -4,11 +4,18 @@ run-local: printmsg.c
 	gcc printmsg.c -o ./bin/printmsg
 	./bin/printmsg "Hello, there."
 
-msg-rpc: msg.x
+msg: msg.x
+	mkdir -p ./bin
 	rpcgen msg.x
 
-run-rpc: printmsg.c msg-rpc
-	mkdir -p ./bin
+client: printmsg.c msg msg_clnt.c
 	gcc printmsgRpc.c msg_clnt.c -o ./bin/printmsgRpc -ltirpc -I /usr/include/tirpc
+
+server: msg msg_proc.c msg_svc.c 
 	gcc msg_proc.c msg_svc.c -o ./bin/msg_server -ltirpc -I /usr/include/tirpc
-	./bin/printmsgRpc "Hello, there."
+
+run-client: client
+	./bin/printmsgRpc localhost "Hello, there."
+
+run-server: server
+	./bin/msg_server
