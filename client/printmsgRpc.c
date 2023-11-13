@@ -15,7 +15,7 @@ main(argc, argv)
 	char *message;
  
 	if (argc != 3) {
-		fprintf(stderr, "usage: %s host message\n", argv[0]);
+		fprintf(stderr, "usage: %s <host> <message>\n", argv[0]);
 		exit(1);
 	}
  
