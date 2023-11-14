@@ -1,3 +1,5 @@
+clean:
+	rm -r ./bin
 
 local: printmsg.c
 	mkdir -p ./bin
