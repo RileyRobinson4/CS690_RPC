@@ -14,6 +14,8 @@ main(argc, argv)
 	char *server;
 	char *message;
  
+	printf("1\r\n");
+
 	if (argc != 3) {
 		fprintf(stderr, "usage: %s <host> <message>\n", argv[0]);
 		exit(1);
@@ -38,17 +40,20 @@ main(argc, argv)
 		clnt_pcreateerror(server);
 		exit(1);
 	}
+		printf("2\r\n");
 		/*
 	 * Call the remote procedure
  * "printmessage" on the server
 	 */
 	result = printmessage_1(&message, clnt);
+			printf("3\r\n");
 	if (result == (int *)NULL) {
 		/*
 		 * An error occurred while calling 
     * the server.
 		 * Print error message and die.
 		 */
+				printf("4\r\n");
 		clnt_perror(clnt, server);
 		exit(1);
 	}
@@ -61,6 +66,7 @@ main(argc, argv)
     * our message.
 		 * Print error message and die.
 		 */
+			printf("5\r\n");
 		fprintf(stderr,
 		"%s: could not print your message\n",argv[0]);
 		exit(1);

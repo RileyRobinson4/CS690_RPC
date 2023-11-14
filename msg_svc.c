@@ -62,29 +62,43 @@ main (int argc, char **argv)
 {
 	register SVCXPRT *transp;
 
+	printf("1\r\n");
+
 	pmap_unset (MESSAGEPROG, PRINTMESSAGEVERS);
+	printf("2\r\n");
+
 
 	transp = svcudp_create(RPC_ANYSOCK);
 	if (transp == NULL) {
 		fprintf (stderr, "%s", "cannot create udp service.");
 		exit(1);
 	}
+		printf("3\r\n");
+
 	if (!svc_register(transp, MESSAGEPROG, PRINTMESSAGEVERS, messageprog_1, IPPROTO_UDP)) {
 		fprintf (stderr, "%s", "unable to register (MESSAGEPROG, PRINTMESSAGEVERS, udp).");
 		exit(1);
 	}
+	printf("4\r\n");
+
 
 	transp = svctcp_create(RPC_ANYSOCK, 0, 0);
 	if (transp == NULL) {
 		fprintf (stderr, "%s", "cannot create tcp service.");
 		exit(1);
 	}
+		printf("5\r\n");
 	if (!svc_register(transp, MESSAGEPROG, PRINTMESSAGEVERS, messageprog_1, IPPROTO_TCP)) {
 		fprintf (stderr, "%s", "unable to register (MESSAGEPROG, PRINTMESSAGEVERS, tcp).");
 		exit(1);
 	}
 
+		printf("6\r\n");
+
 	svc_run ();
+
+	printf("7\r\n");
+
 	fprintf (stderr, "%s", "svc_run returned");
 	exit (1);
 	/* NOTREACHED */

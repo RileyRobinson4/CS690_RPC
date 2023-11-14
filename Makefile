@@ -8,7 +8,6 @@ run-local: local
 
 msg: msg.x
 	mkdir -p ./bin
-	rpcgen msg.x
 
 client: printmsg.c msg msg_clnt.c
 	gcc printmsgRpc.c msg_clnt.c -o ./bin/printmsgRpc -ltirpc -I /usr/include/tirpc
