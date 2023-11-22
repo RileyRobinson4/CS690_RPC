@@ -33,7 +33,7 @@ messageprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 
 	case PRINTMESSAGE:
 		_xdr_argument = (xdrproc_t) xdr_wrapstring;
-		_xdr_result = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_wrapstring;
 		local = (char *(*)(char *, struct svc_req *)) printmessage_1_svc;
 		break;
 
