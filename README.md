@@ -9,7 +9,7 @@ sudo apt install rpcsvc-proto
 ##For some headers
 sudo apt-get install build-essential
 
-##This enables the server to bind to the port.
+##This enables the server to register.
 sudo apt install rpcbind
 
 
